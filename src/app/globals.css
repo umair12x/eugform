@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-primary-gradient {
+  @apply relative font-semibold tracking-wide text-transparent 
+  bg-clip-text transition-all duration-700 
+  bg-gradient-to-r from-[#d3a410] via-[#b7870f] to-[#d3a410] 
+  drop-shadow-[0_2px_10px_rgba(211,165,16,0.4)];
+  background-size: 200% auto;
+  animation: shine-move 4s ease-in-out infinite;
+}
+.text-secondary-gradient {
+  @apply relative font-semibold tracking-wide text-transparent 
+  bg-clip-text transition-all duration-700 
+  bg-gradient-to-r from-[#0e5acd] via-[#071f41] to-[#7999c9] 
+  drop-shadow-[0_2px_10px_rgba(14,90,205,0.4)];
+  background-size: 250% auto;
+  animation: shine-move 4s ease-in-out infinite;
+}
+
+@keyframes shine-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 50% 75%;
+  }
+}
