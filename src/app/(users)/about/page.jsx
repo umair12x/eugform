@@ -1,66 +1,94 @@
 export const metadata = {
   title: "About eUG Form",
   description:
-    "Learn more about eUG Form, a digital platform that simplifies undergraduate form submission at the University of Agriculture.",
+    "Learn more about eUG Form, a digital platform that simplifies undergraduate form submission at the University of Agriculture",
 };
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-gray-50 p-10 flex justify-center items-center">
-      <div className="max-w-4xl bg-white rounded-2xl shadow-xl p-10">
-        <h1 className="text-4xl font-bold text-blue-700 text-center mb-6">
+    <main
+      className="
+         flex justify-center items-center px-6 py-14 transition
+        bg-yellow-50 dark:bg-[#0b0f14]
+      "
+    >
+      <div
+        className="
+          max-w-5xl w-full rounded-2xl p-10 transition
+          bg-white dark:bg-[#121821]
+          shadow-xl border
+          border-yellow-200 dark:border-gray-800
+        "
+      >
+        {/* Heading */}
+        <h1 className="text-4xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">
           About eUG Form
         </h1>
-        <p className="text-gray-700 text-lg leading-relaxed mb-6 text-justify">
-          The <span className="font-semibold text-blue-600">eUG Form</span> is a
-          digital platform designed to simplify the process of undergraduate
-          form submission at the University of Agriculture. Traditionally,
-          students had to manually fill UG forms, print fee vouchers, get tutor
-          signatures, and submit hard copies on campus, which was time-consuming
-          and prone to delays.
+
+        {/* Intro */}
+        <p className="text-gray-700 dark:text-gray-400 text-lg leading-relaxed mb-8 text-justify">
+          <span className="font-semibold text-yellow-600 dark:text-yellow-400">
+            eUG Form
+          </span>{" "}
+          is a modern digital platform built to simplify undergraduate form
+          submission at the University of Agriculture, where students previously
+          had to deal with paperwork, long queues, manual verification, and
+          repeated campus visits
         </p>
 
-        <h2 className="text-2xl font-semibold text-blue-600 mt-8 mb-3">
+        <p className="text-gray-700 dark:text-gray-400 text-lg leading-relaxed mb-10 text-justify">
+          This system replaces the traditional process with an efficient,
+          paperless workflow that allows students, tutors, and administrators to
+          manage everything online with transparency and speed
+        </p>
+
+        {/* How it works */}
+        <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
           How It Works
         </h2>
-        <ul className="list-decimal list-inside space-y-3 text-gray-700 text-lg">
+
+        <ul className="list-decimal list-inside space-y-3 text-gray-700 dark:text-gray-400 text-lg mb-10">
           <li>
-            Students log in and fill out their UG form online using an
-            easy-to-use interface.
+            Students log in and complete their undergraduate form using a simple
+            and user friendly interface
           </li>
           <li>
             The system automatically fetches the official fee voucher from the
-            university’s website using web scraping technology.
+            university finance portal
           </li>
           <li>
-            After payment, students can upload the paid voucher for
-            verification.
+            After payment, students upload the paid voucher along with bank
+            details for verification
           </li>
           <li>
-            Tutors and department heads digitally approve the form through their
-            respective dashboards.
+            Tutors and department authorities review and approve forms digitally
+            through their dashboards
           </li>
           <li>
-            Students receive instant updates and status notifications through
-            email or WhatsApp.
+            Students receive real time updates and notifications regarding their
+            form status
           </li>
         </ul>
 
-        <h2 className="text-2xl font-semibold text-blue-600 mt-8 mb-3">
+        {/* Features */}
+        <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
           Key Features
         </h2>
-        <ul className="list-disc list-inside space-y-3 text-gray-700 text-lg">
-          <li>Completely paperless process for UG form submission</li>
+
+        <ul className="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-400 text-lg mb-12">
+          <li>Fully paperless undergraduate form submission process</li>
           <li>Automated fee voucher download and digital verification</li>
-          <li>Role-based access for Students, Tutors, and Admins</li>
-          <li>Real-time form status tracking</li>
-          <li>Automatic notifications and reminders</li>
+          <li>Role based access for students, tutors, and administrators</li>
+          <li>Real time form tracking and approval status</li>
+          <li>Email and WhatsApp notifications for important updates</li>
         </ul>
 
-        <div className="mt-10 text-center">
-          <p className="text-gray-600 text-lg">
-            The goal of eUG Form is to save time, reduce errors, and make the
-            submission process faster and smarter for every student.
+        {/* Closing */}
+        <div className="text-center">
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-3xl mx-auto">
+            The mission of eUG Form is to save student time, reduce human error,
+            and create a smarter enrollment experience through technology and
+            automation
           </p>
         </div>
       </div>

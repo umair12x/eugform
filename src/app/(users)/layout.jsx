@@ -1,118 +1,172 @@
 "use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Icon from "@/components/Icon";
+import Switch from "@/components/themeToggle";
 import { Work_Sans } from "next/font/google";
 import "../globals.css";
 
-const workSans = Work_Sans({ subsets: ["latin"], weight: ["400", "700"] });
-
-// export const metadata = {
-//   title:{
-//     default: "eUG Form - University Enrollment Made Easy",
-//     template: "%s | eUG Form"
-//   },
-//   icon: "/favicon.ico",
-//   description:
-//     "An application to submit enrollment forms easily without hassle without any hardcopy",
-//   authors: [{ name: "Umair Imran", url: "https://umairimran.com" }],
-//   ketwords: [
-//     "eUG Form",
-//     "University of Agriculture",
-//     "Undergraduate Enrollment",
-//     "Digital Form Submission",
-//     "eUG",
-//     "UAF Enrollment",
-//     "Online Application",
-//     "Student Forms",
-//     "University Forms",
-//     "eUG Support",
-//   ],
-// };
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function RootLayout({ children }) {
+  const [theme, setTheme] = useState("light");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) setTheme(savedTheme);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
-    <html lang="en">
-      <body className={workSans.className}>
-        <header className="bg-gray-200 dark:bg-gray-800 h-10 shadow-md">
-          <nav className="w-full flex justify-between items-center">
-            <div className="navbar bg-base-100 shadow-sm">
-              <div className="navbar-start flex">
-                <Icon />
-              </div>
-              <div className="navbar-center">
-                <a className="btn btn-ghost text-xl">e.Enrollment</a>
-              </div>
-              <div className="navbar-end">
-              
-                <button className="btn btn-ghost btn-circle">
-                  <div className="indicator">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      {" "}
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                      />{" "}
-                    </svg>
-                    <span className="badge badge-xs badge-primary indicator-item"></span>
-                  </div>
-                </button>
+    <html lang="en" data-theme={theme}>
+      <body className={`${workSans.className} min-h-screen flex flex-col`}>
 
-                <div className="dropdown relative">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn btn-ghost btn-circle"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 6h16M4 12h16M4 18h7"
-                      />
-                    </svg>
-                  </div>
+        {/* Navbar */}
+        <header
+          className="
+            sticky top-0 z-50 backdrop-blur
+            bg-yellow-50/90 dark:bg-[#0b0f14]/95
+            border-b border-yellow-200 dark:border-gray-800
+          "
+        >
+          <nav className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
 
-                  <ul
-                    tabIndex="-1"
-                    className="absolute right-0 mt-3 w-60 bg-base-100 rounded-box shadow menu menu-sm dropdown-content z-50"
-                  >
-                    <li>
-                      <Link href="/">Homepage</Link>
-                    </li>
-                    <li>
-                      <Link href="/about">About</Link>
-                    </li>
-                    <li>
-                      <Link href="/contact">Contact</Link>
-                    </li>
-                  </ul>
+            {/* Left */}
+            <div className="flex items-center gap-3">
+              <Icon />
+              <span className="font-bold text-lg text-gray-800 dark:text-gray-100">
+                e.Enrollment
+              </span>
+            </div>
+
+            {/* Desktop Links */}
+            <div className="hidden md:flex items-center gap-8">
+              <Link
+                href="/"
+                className="
+                  font-medium transition
+                  text-gray-800 dark:text-gray-100
+                  hover:text-yellow-600 dark:hover:text-yellow-400
+                "
+              >
+                Home
+              </Link>
+              <Link
+                href="/about"
+                className="
+                  font-medium transition
+                  text-gray-800 dark:text-gray-100
+                  hover:text-yellow-600 dark:hover:text-yellow-400
+                "
+              >
+                About
+              </Link>
+              <Link
+                href="/contact"
+                className="
+                  font-medium transition
+                  text-gray-800 dark:text-gray-100
+                  hover:text-yellow-600 dark:hover:text-yellow-400
+                "
+              >
+                Contact
+              </Link>
+
+              <Switch theme={theme} setTheme={setTheme} />
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-gray-800 dark:text-gray-100"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </nav>
+
+          {/* Mobile Menu */}
+          {menuOpen && (
+            <div
+              className="
+                md:hidden
+                bg-yellow-50 dark:bg-[#0f172a]
+                border-t border-yellow-200 dark:border-gray-800
+              "
+            >
+              <div className="flex flex-col items-center p-4 gap-4">
+                <Link
+                  href="/"
+                  onClick={() => setMenuOpen(false)}
+                  className="
+                    text-gray-800 dark:text-gray-100
+                    hover:text-yellow-600 dark:hover:text-yellow-400
+                  "
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/about"
+                  onClick={() => setMenuOpen(false)}
+                  className="
+                    text-gray-800 dark:text-gray-100
+                    hover:text-yellow-600 dark:hover:text-yellow-400
+                  "
+                >
+                  About
+                </Link>
+                <Link
+                  href="/contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="
+                    text-gray-800 dark:text-gray-100
+                    hover:text-yellow-600 dark:hover:text-yellow-400
+                  "
+                >
+                  Contact
+                </Link>
+
+                <div className="pt-2">
+                  <Switch theme={theme} setTheme={setTheme} />
                 </div>
               </div>
             </div>
-          </nav>
+          )}
         </header>
 
-        <main>{children}</main>
+        {/* Main */}
+        <main className="flex-1">{children}</main>
 
-        <footer className="bg-gray-200 dark:bg-gray-800 text-gray-800 text-center p-4">
-          © {new Date().getFullYear()} eUG Form. All rights reserved.
+        {/* Footer */}
+        <footer className="footer-style">
+          © {new Date().getFullYear()} eUG Form. All rights reserved
         </footer>
+
       </body>
     </html>
   );
 }
+  
