@@ -72,7 +72,7 @@ body {
 }
 
 /* Navbar */
-.vav-style {
+.nav-style {
   @apply bg-yellow-50 text-gray-800 text-center p-4
   dark:bg-[#0b0f14] dark:text-gray-200;
 }
@@ -117,4 +117,101 @@ body {
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fixed: Removed nested structure and properly defined new classes */
+.btn-primary-enhanced {
+  @apply px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg 
+         hover:from-blue-700 hover:to-blue-800 transition-all duration-300 
+         shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+}
+
+.btn-secondary-enhanced {
+  @apply px-6 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-semibold rounded-lg 
+         border border-gray-300 dark:border-gray-700 hover:border-blue-500 
+         transition-all duration-300 shadow hover:shadow-md;
+}
+
+.card {
+  @apply bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 
+         shadow-sm hover:shadow-xl transition-all duration-300;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 
+         rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
+         dark:focus:ring-blue-400 dark:focus:border-blue-400 
+         transition-all duration-300;
+}
+
+.section-padding {
+  @apply py-12 md:py-20;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500 dark:bg-gray-600;
+}
+
+
+/* Additional CSS for Guide Page */
+.sticky-nav {
+  position: sticky;
+  top: 4rem;
+  z-index: 40;
+  backdrop-filter: blur(8px);
+}
+
+.sticky-sidebar {
+  position: sticky;
+  top: 7rem;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .process-step {
+    flex-direction: column;
+  }
+  
+  .process-step-indicator {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+  
+  .print-full {
+    width: 100% !important;
+  }
 }
