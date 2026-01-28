@@ -10,8 +10,9 @@ import {
   FaUniversity,
   FaSignInAlt,
 } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 
-export default function Navbar({ theme, toggleTheme }) {
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
@@ -21,14 +22,12 @@ export default function Navbar({ theme, toggleTheme }) {
     { href: "/gsform", label: "GS-10 Form" },
     { href: "/guide", label: "Guide" },
     { href: "/contact", label: "Contact" },
-    { href: "/admin", label: "Admin" },
   ];
 
   return (
     <nav className="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="p-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg">
               <FaUniversity className="text-2xl text-white" />
@@ -55,14 +54,7 @@ export default function Navbar({ theme, toggleTheme }) {
               </Link>
             ))}
 
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
-              aria-label="Toggle theme"
-            >
-              {theme === "light" ? <FaMoon size={20} /> : <FaSun size={20} />}
-            </button>
+            <ThemeToggle />
 
             {/* Login Button */}
             <Link
@@ -75,13 +67,7 @@ export default function Navbar({ theme, toggleTheme }) {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center space-x-4 md:hidden">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-              aria-label="Toggle theme"
-            >
-              {theme === "light" ? <FaMoon size={20} /> : <FaSun size={20} />}
-            </button>
+            <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-lg text-gray-700 dark:text-gray-300"

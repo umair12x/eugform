@@ -1,10 +1,9 @@
-'use client';
-import { useState, useEffect } from "react";
-import Navbar  from "../../components/AdminNavbar";
+import Navbar  from "../../components/StudentNavbar";
 
 
 export default function RootLayout({ children }) {
  
+
   return (
     <>
       <Navbar />

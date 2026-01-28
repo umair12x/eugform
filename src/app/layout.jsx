@@ -4,7 +4,6 @@
 import { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -45,7 +44,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        {/* <Navbar theme={theme} toggleTheme={toggleTheme} /> */}
         <main className="flex-grow">
           {children}
         </main>

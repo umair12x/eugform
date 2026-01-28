@@ -1,4 +1,4 @@
-// components/Footer.js
+'use client';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
