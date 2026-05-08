@@ -40,7 +40,7 @@ export async function POST(req) {
     console.error("Contact message create error:", error);
     return NextResponse.json(
       { message: "Internal server error" },
-      { status: 500 }
+      { status: 500 } 
     );
   }
 }

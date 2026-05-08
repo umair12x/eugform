@@ -1,5 +1,7 @@
 'use client';
 
+import NavBar from '@/components/layout/NavBar';
+import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Search, Home, ArrowLeft } from 'lucide-react';
@@ -9,8 +11,10 @@ export default function NotFound() {
   const router = useRouter();
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
-      <motion.div
+    <div id="top" className="min-h-screen flex flex-col">
+      <NavBar />
+      <main className="flex-grow flex items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
+        <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -46,25 +50,19 @@ export default function NotFound() {
 
           {/* Description */}
           <p className="text-gray-600 dark:text-gray-400 mb-8">
-            Sorry, we couldn't find the page you're looking for. It might have been moved or removed.
+            The page you're looking for doesn't exist or has been moved. Let's get you back on track.
           </p>
 
-          {/* Quick Links */}
+          {/* Search Suggestions */}
           <div className="mb-8 p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg border border-indigo-200 dark:border-indigo-800">
             <p className="text-sm font-semibold text-indigo-900 dark:text-indigo-300 mb-3">
-              Explore our site:
+              Try one of these:
             </p>
-            <div className="flex flex-col gap-2 text-sm">
-              <Link href="/about" className="text-indigo-700 dark:text-indigo-400 hover:underline">
-                → Learn About Us
-              </Link>
-              <Link href="/guide" className="text-indigo-700 dark:text-indigo-400 hover:underline">
-                → User Guide
-              </Link>
-              <Link href="/contact" className="text-indigo-700 dark:text-indigo-400 hover:underline">
-                → Get in Touch
-              </Link>
-            </div>
+            <ul className="text-sm text-indigo-800 dark:text-indigo-400 space-y-1">
+              <li>• Check the URL for typos</li>
+              <li>• Use the navigation menu to find what you need</li>
+              <li>• Go back to the previous page</li>
+            </ul>
           </div>
 
           {/* Action Buttons */}
@@ -89,6 +87,8 @@ export default function NotFound() {
           </div>
         </div>
       </motion.div>
-    </main>
+      </main>
+      <Footer />
+    </div>
   );
 }

@@ -50,16 +50,6 @@ export default function StudentLayout({ children }) {
       darkBg: "dark:bg-violet-500/10",
       textColor: "text-violet-600 dark:text-violet-400",
     },
-    {
-      name: "GS-10 Form",
-      href: "/student/form/gs10",
-      icon: BookOpen,
-      description: "Thesis/Research",
-      gradient: "from-amber-500 to-amber-600",
-      lightBg: "bg-amber-50",
-      darkBg: "dark:bg-amber-500/10",
-      textColor: "text-amber-600 dark:text-amber-400",
-    },
   ];
 
   const isActive = (href) => {

@@ -44,6 +44,24 @@ export async function middleware(request) {
     return NextResponse.next();
   }
 
+  // Check if it is an API route that is unknown. We should return 404 JSON instantly
+  if (pathname.startsWith("/api/")) {
+    const allProtectedApiRoutes = Object.values(protectedApiRoutes).flat();
+    const isProtectedApiRoute = allProtectedApiRoutes.some((route) => pathname.startsWith(route));
+    if (!isProtectedApiRoute) {
+      return NextResponse.json({ success: false, message: "API Route Not Found" }, { status: 404 });
+    }
+  }
+
+  // Check if it's a known protected route. If it's not known, it could be a 404 page
+  // We should allow it to hit Next.js's router to show 404 instead of redirecting to login.
+  const allProtectedRoutes = Object.values(roleRoutes).flat();
+  const isProtectedRoute = allProtectedRoutes.some((route) => pathname === route || pathname.startsWith(route + "/"));
+
+  if (!isProtectedRoute && !pathname.startsWith("/api/")) {
+    return NextResponse.next();
+  }
+
   // Check for token
   const token = request.cookies.get("token")?.value;
 
@@ -86,7 +104,7 @@ export async function middleware(request) {
           isAuthorized = true;
         } else {
           // User is trying to access another role's route
-          unauthorizedPath = getRoleDashboard(userRole);
+          unauthorizedPath = "/unauthorized";
         }
         break;
       }
@@ -112,13 +130,9 @@ export async function middleware(request) {
 
     // If not authorized, check if user has valid role
     if (!isAuthorized && !unauthorizedPath) {
-      // If the route is in protectedRoutes but user isn't authorized
-      const allProtectedRoutes = Object.values(roleRoutes).flat();
-      if (allProtectedRoutes.some((route) => pathname === route || pathname.startsWith(route + "/"))) {
-        unauthorizedPath = getRoleDashboard(userRole);
+      if (isProtectedRoute) {
+        unauthorizedPath = "/unauthorized";
       } else {
-        // Route is not in any role's path, might be a custom page that needs auth
-        // Allow it to proceed (could be error page, etc)
         return NextResponse.next();
       }
     }
