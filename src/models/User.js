@@ -16,12 +16,10 @@ const UserSchema = new mongoose.Schema(
       type: String, 
       trim: true,
       lowercase: true,
-      sparse: true,
     },
     registrationNumber: { 
       type: String, 
       trim: true,
-      sparse: true,
     },
     password: { 
       type: String, 

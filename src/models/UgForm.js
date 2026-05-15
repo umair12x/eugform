@@ -306,7 +306,6 @@ const UgFormSchema = new mongoose.Schema(
 );
 
 // Indexes for efficient querying
-UgFormSchema.index({ formNumber: 1 });
 UgFormSchema.index({ registeredNo: 1 });
 UgFormSchema.index({ status: 1 });
 UgFormSchema.index({ department: 1, degree: 1, semester: 1 });
