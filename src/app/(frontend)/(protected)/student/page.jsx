@@ -188,12 +188,7 @@ export default function page() {
             >
               <BookOpen className="w-4 h-4" /> UG-1 Form
             </Link>
-            <Link
-              href="/student/form/gs10"
-              className="inline-flex items-center gap-2 justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-2 text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition"
-            >
-              <Calendar className="w-4 h-4" /> GS-10 Form
-            </Link>
+           
           </div>
         </div>
       </div>
@@ -214,11 +209,7 @@ export default function page() {
               <FileText className="w-4 h-4" /> Submit UG-1 form
             </div>
           </Link>
-          <Link href="/student/form/gs10" className="rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
-            <div className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200">
-              <BookOpen className="w-4 h-4" /> Submit GS-10 form
-            </div>
-          </Link>
+         
           <Link href="/contact" className="rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
             <div className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-200">
               <AlertCircle className="w-4 h-4" /> Get help

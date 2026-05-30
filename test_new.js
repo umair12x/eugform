@@ -1,0 +1,1 @@
+import connectDB from './src/lib/db.js'; import User from './src/models/User.js'; async function run() { try { await connectDB(); const u = await User.findOne({}); console.log('DB SUCCESS', u); } catch(e) { console.error('DB ERROR', e.message); } process.exit(0); } run();

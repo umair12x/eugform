@@ -1,0 +1,1 @@
+import connectDB from './src/lib/db.js'; import User from './src/models/User.js'; import UgForm from './src/models/UgForm.js'; import Fee from './src/models/Fee.js'; async function run() { await connectDB(); } run();
