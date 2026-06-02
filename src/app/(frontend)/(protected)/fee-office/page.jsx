@@ -334,13 +334,7 @@ export default function FeeSectionDashboard() {
                 <RefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
               </button>
               
-              <button
-                onClick={exportData}
-                className="flex items-center gap-2 px-4 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-sm font-medium"
-              >
-                <Download className="w-4 h-4" />
-                Export
-              </button>
+             
               
               <div className="h-8 w-px bg-slate-200 dark:bg-slate-800" />
               

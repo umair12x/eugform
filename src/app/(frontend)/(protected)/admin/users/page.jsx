@@ -402,13 +402,7 @@ export default function UsersManagementPage() {
             <RefreshCw className={`w-4 h-4 ${refreshing ? "animate-spin" : ""}`} />
             Refresh
           </button>
-          <button
-            onClick={handleExport}
-            className="flex items-center gap-2 px-4 py-2.5 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
-          >
-            <Download className="w-4 h-4" />
-            Export
-          </button>
+         
           <Link
             href="/admin/create-user"
             className="flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white px-5 py-2.5 rounded-xl font-medium transition-all shadow-lg shadow-violet-200 dark:shadow-violet-900/30"

@@ -355,7 +355,7 @@ function LoginContent() {
                     htmlFor="remember"
                     className="ml-2 text-sm text-slate-600 dark:text-slate-400 select-none"
                   >
-                    Remember this device for 30 days
+                    Remember this device for 7 days
                   </label>
                 </div>
 
